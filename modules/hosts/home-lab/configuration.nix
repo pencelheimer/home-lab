@@ -25,6 +25,7 @@
       self.nixosModules.postgresql
       self.nixosModules.healthcheck-heartbeet
       self.nixosModules.cloudflared
+      self.nixosModules.caddy
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
