@@ -20,6 +20,8 @@
 
       self.nixosModules.apps
       self.nixosModules.fish
+
+      self.nixosModules.postgresql
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
