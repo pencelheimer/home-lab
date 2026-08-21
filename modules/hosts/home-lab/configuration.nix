@@ -23,6 +23,7 @@
       self.nixosModules.fish
 
       self.nixosModules.postgresql
+      self.nixosModules.healthcheck-heartbeet
       self.nixosModules.cloudflared
     ];
 

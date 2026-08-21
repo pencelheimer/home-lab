@@ -1,1 +1,2 @@
 /modules/hosts/home-lab/secrets.nix filter=git-crypt diff=git-crypt
+/modules/hosts/home-lab/cloudflared-credentials.json filter=git-crypt diff=git-crypt
