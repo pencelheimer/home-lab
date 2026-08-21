@@ -36,6 +36,8 @@
       self.nixosModules.navidrome
       self.nixosModules.qbittorrent
       self.nixosModules.copyparty
+      self.nixosModules.home-assistant
+      self.nixosModules.esphome
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
