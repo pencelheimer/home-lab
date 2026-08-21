@@ -22,10 +22,10 @@
       self.nixosModules.apps
       self.nixosModules.fish
 
-      self.nixosModules.postgresql
-      self.nixosModules.healthcheck-heartbeet
       self.nixosModules.cloudflared
       self.nixosModules.caddy
+      self.nixosModules.postgresql
+      self.nixosModules.vaultwarden
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
