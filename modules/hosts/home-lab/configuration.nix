@@ -32,6 +32,7 @@
       self.nixosModules.ntfy
       self.nixosModules.radicale
       self.nixosModules.navidrome
+      self.nixosModules.qbittorrent
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
