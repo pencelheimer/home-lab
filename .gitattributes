@@ -1,0 +1,1 @@
+/modules/hosts/home-lab/secrets.nix filter=git-crypt diff=git-crypt
