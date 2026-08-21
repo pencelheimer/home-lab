@@ -28,6 +28,7 @@
       self.nixosModules.vaultwarden
       self.nixosModules.miniflux
       self.nixosModules.rssbridge
+      self.nixosModules.ntfy
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
