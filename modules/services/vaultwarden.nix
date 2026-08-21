@@ -1,14 +1,14 @@
 {...}: {
   flake.nixosModules.vaultwarden = {pkgs, lib, config, ...}: {
-    options = {
+    options = with lib.types; {
       settings.vaultwarden = {
         domain = lib.mkOption {
-          type = lib.types.str;
+          type = str;
           default = "vault.pencel.dev";
           description = "Domain name for Vaultwarden";
         };
         port = lib.mkOption {
-          type = lib.types.port;
+          type = port;
           default = 8222;
           description = "Internal port for Vaultwarden web server";
         };

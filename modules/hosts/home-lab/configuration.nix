@@ -26,6 +26,8 @@
       self.nixosModules.caddy
       self.nixosModules.postgresql
       self.nixosModules.vaultwarden
+      self.nixosModules.miniflux
+      self.nixosModules.rssbridge
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
