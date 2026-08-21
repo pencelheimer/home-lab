@@ -4,6 +4,8 @@
 
     modules = [
       self.nixosModules.home-lab
+
+      inputs.copyparty.nixosModules.default
     ];
   };
 
@@ -33,6 +35,7 @@
       self.nixosModules.radicale
       self.nixosModules.navidrome
       self.nixosModules.qbittorrent
+      self.nixosModules.copyparty
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
