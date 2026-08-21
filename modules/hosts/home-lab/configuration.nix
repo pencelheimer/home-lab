@@ -9,7 +9,22 @@
 
   flake.nixosModules.home-lab = {pkgs, ...}: {
     imports = [
+      self.nixosModules.nix
+      self.nixosModules.user
+      self.nixosModules.locale
+      self.nixosModules.networkmanager
+
+      self.nixosModules.ssh
+      self.nixosModules.kmscon
+      self.nixosModules.podman
+
+      self.nixosModules.apps
+      self.nixosModules.fish
     ];
+
+    settings.flake-path = "/home/pencelheimer/flake";
+    settings.user.name = "pencelheimer";
+    settings.user.initial-password = "12345";
 
     system.stateVersion = "26.05";
 
