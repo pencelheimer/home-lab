@@ -13,6 +13,7 @@
       self.nixosModules.user
       self.nixosModules.locale
       self.nixosModules.networkmanager
+      self.nixosModules.avahi
 
       self.nixosModules.ssh
       self.nixosModules.kmscon
