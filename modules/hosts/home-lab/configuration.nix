@@ -17,11 +17,13 @@
       self.nixosModules.ssh
       self.nixosModules.kmscon
       self.nixosModules.podman
+      self.nixosModules.healthcheck-heartbeet
 
       self.nixosModules.apps
       self.nixosModules.fish
 
       self.nixosModules.postgresql
+      self.nixosModules.cloudflared
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
