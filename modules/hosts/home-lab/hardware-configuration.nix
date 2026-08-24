@@ -15,34 +15,36 @@
 
     # TODO: replace with real hardware instead of qemu guest
 
-    boot.initrd.availableKernelModules = [ "virtio_pci" "uhci_hcd" "ehci_pci" "ahci" "sr_mod" "virtio_blk" ];
+    boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ "kvm-intel" ];
     boot.extraModulePackages = [ ];
 
     fileSystems."/" =
-      { device = "/dev/disk/by-uuid/10ee6bb8-d952-4e01-90fa-fcb92ab0cb47";
+      { device = "/dev/disk/by-uuid/1bca2463-54c0-4016-9706-f714de3c51c1";
         fsType = "btrfs";
       };
-
+ 
     fileSystems."/home" =
-      { device = "/dev/disk/by-uuid/10ee6bb8-d952-4e01-90fa-fcb92ab0cb47";
+      { device = "/dev/disk/by-uuid/1bca2463-54c0-4016-9706-f714de3c51c1";
         fsType = "btrfs";
         options = [ "subvol=home" ];
       };
-
+ 
     fileSystems."/nix" =
-      { device = "/dev/disk/by-uuid/10ee6bb8-d952-4e01-90fa-fcb92ab0cb47";
+      { device = "/dev/disk/by-uuid/1bca2463-54c0-4016-9706-f714de3c51c1";
         fsType = "btrfs";
         options = [ "subvol=nix" ];
       };
-
+ 
     fileSystems."/boot" =
-      { device = "/dev/disk/by-uuid/DBA0-E877";
+      { device = "/dev/disk/by-uuid/AAA7-97B9";
         fsType = "vfat";
         options = [ "fmask=0077" "dmask=0077" ];
       };
-
-    swapDevices = [ ];
+ 
+    swapDevices =
+      [ { device = "/dev/disk/by-uuid/8ebcf856-740b-4f2f-b86b-6eb7a890cb2f"; }
+      ];
   };
 }
