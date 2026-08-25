@@ -5,6 +5,8 @@
       wget
       curl
       yazi
+      git-crypt
+      cloudflared
     ];
 
     programs.neovim.enable = true;
