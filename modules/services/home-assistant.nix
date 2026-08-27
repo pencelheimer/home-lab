@@ -28,8 +28,17 @@
         ];
         extraOptions = [
           "--network=host"
+          "--cap-add=NET_ADMIN"
+          "--cap-add=NET_RAW"
+          "--device=/dev/bus/usb"
         ];
       };
+
+      systemd.tmpfiles.rules = [
+        "d /var/lib/homeassistant 0755 root root -"
+      ];
+
+      networking.firewall.allowedTCPPorts = [ config.settings.home-assistant.port ];
 
       services.caddy.virtualHosts."http://${config.settings.home-assistant.domain}" = {
         extraConfig = ''
