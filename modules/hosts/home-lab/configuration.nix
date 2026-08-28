@@ -20,7 +20,7 @@
       self.nixosModules.ssh
       self.nixosModules.kmscon
       self.nixosModules.podman
-      self.nixosModules.healthcheck-heartbeet
+      self.nixosModules.healthcheck-heartbeat
 
       self.nixosModules.apps
       self.nixosModules.fish

@@ -1,14 +1,14 @@
 {...}: {
-  flake.nixosModules.healthcheck-heartbeet = {pkgs, lib, config, ...}: {
+  flake.nixosModules.healthcheck-heartbeat = {pkgs, lib, config, ...}: {
     options = with lib.types; {
-      settings.healthcheck-heartbeet.id = lib.mkOption {
+      settings.healthcheck-heartbeat.id = lib.mkOption {
         type = str;
         description = "UUID of the endpoint to ping";
       };
     };
 
     config = {
-      systemd.services.healthcheck-heartbeet = {
+      systemd.services.healthcheck-heartbeat = {
         description = "Ping Healthchecks.io";
 
         serviceConfig = {
@@ -17,7 +17,7 @@
         };
 
         script = ''
-          ${pkgs.curl}/bin/curl -fsS -m 10 --retry 3 https://hc-ping.com/${config.settings.healthcheck-heartbeet.id}
+          ${pkgs.curl}/bin/curl -fsS -m 10 --retry 3 https://hc-ping.com/${config.settings.healthcheck-heartbeat.id}
         '';
       };
 
