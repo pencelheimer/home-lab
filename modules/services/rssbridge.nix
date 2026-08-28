@@ -4,7 +4,7 @@
       settings.rssbridge = {
         domain = lib.mkOption {
           type = str;
-          default = "rssbridge.pencel.dev";
+          default = "rss-bridge.pencel.dev";
           description = "Domain name for RSS-Bridge";
         };
 
@@ -28,6 +28,8 @@
     config = {
       services.rss-bridge = {
         enable = true;
+        webserver = "caddy";
+        virtualHost = "http://${config.settings.rssbridge.domain}";
         config = {
           system = {
             # TODO: enable only essential bridges
@@ -44,14 +46,6 @@
             key = config.settings.rssbridge.custom-token;
           };
         };
-      };
-
-      services.caddy.virtualHosts."http://${config.settings.rssbridge.domain}" = {
-        extraConfig = ''
-          root * ${pkgs.rss-bridge}
-          php_fastcgi unix//run/phpfpm/rss-bridge.sock
-          file_server
-        '';
       };
     };
   };
