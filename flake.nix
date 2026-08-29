@@ -5,6 +5,7 @@
     import-tree.url = "github:vic/import-tree";
 
     copyparty.url = "github:9001/copyparty";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }

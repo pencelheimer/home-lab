@@ -6,6 +6,7 @@
       self.nixosModules.home-lab
 
       inputs.copyparty.nixosModules.default
+      inputs.hermes-agent.nixosModules.default
     ];
   };
 
@@ -38,6 +39,7 @@
       self.nixosModules.copyparty
       self.nixosModules.home-assistant
       self.nixosModules.esphome
+      # self.nixosModules.hermes
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
