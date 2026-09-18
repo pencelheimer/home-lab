@@ -37,6 +37,7 @@
       self.nixosModules.navidrome
       self.nixosModules.qbittorrent
       self.nixosModules.copyparty
+      self.nixosModules.cist-schedule
       self.nixosModules.home-assistant
       self.nixosModules.esphome
       # self.nixosModules.hermes
