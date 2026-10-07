@@ -43,7 +43,7 @@
       self.nixosModules.hermes
     ];
 
-    settings.flake-path = "/home/pencelheimer/flake";
+    settings.flake-path = "/srv/shared/flake";
     settings.user.name = "pencelheimer";
     settings.user.initial-password = "12345";
 

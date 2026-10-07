@@ -53,6 +53,8 @@
         };
       };
 
+      systemd.services.hermes-agent.serviceConfig.ReadWritePaths = ["/srv/shared"];
+      users.users.hermes.extraGroups = ["users"];
       environment.shellAliases.hermes-as = "sudo -u hermes -H env HERMES_HOME=/var/lib/hermes/.hermes hermes";
 
       systemd.services.hermes-agent.serviceConfig.SupplementaryGroups = ["systemd-journal"];
