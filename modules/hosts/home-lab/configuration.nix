@@ -40,7 +40,7 @@
       self.nixosModules.cist-schedule
       self.nixosModules.home-assistant
       self.nixosModules.esphome
-      # self.nixosModules.hermes
+      self.nixosModules.hermes
     ];
 
     settings.flake-path = "/home/pencelheimer/flake";
