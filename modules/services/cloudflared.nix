@@ -22,7 +22,6 @@
             ingress = {
               "ssh.pencel.dev" = "ssh://localhost:22";
               "pencel.dev" = "http://localhost:80";
-              "*.pencel.dev" = "http://localhost:80";
             };
             default = "http://localhost:80";
           };
