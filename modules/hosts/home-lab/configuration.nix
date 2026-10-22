@@ -19,6 +19,7 @@
       self.nixosModules.avahi
 
       self.nixosModules.ssh
+      self.nixosModules.security
       self.nixosModules.kmscon
       self.nixosModules.podman
       self.nixosModules.healthcheck-heartbeat

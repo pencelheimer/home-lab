@@ -2,6 +2,12 @@
   flake.nixosModules.rssbridge = {pkgs, lib, config, ...}: {
     options = with lib.types; {
       settings.rssbridge = {
+        enable = lib.mkOption {
+          type = bool;
+          default = true;
+          description = "Whether RSS-Bridge is enabled. Set false to disable (e.g. while PHP CVEs are unpatched).";
+        };
+
         domain = lib.mkOption {
           type = str;
           default = "rss-bridge.pencel.dev";
@@ -25,7 +31,7 @@
       };
     };
 
-    config = {
+    config = lib.mkIf config.settings.rssbridge.enable {
       services.rss-bridge = {
         enable = true;
         webserver = "caddy";
