@@ -7,6 +7,12 @@
       git-crypt
       cloudflared
       lm_sensors
+      claude-code
+    ];
+
+    # Shared projects dir, accessible by the users group (like /srv/shared itself).
+    systemd.tmpfiles.rules = [
+      "d /srv/shared/projects 0770 root users -"
     ];
 
     programs.neovim.enable = true;
@@ -17,14 +23,6 @@
       baseIndex = 1;
       keyMode = "vi";
       clock24 = true;
-    };
-
-    # Rebuild service runs as root with no $HOME; it must trust the
-    # pencelheimer-owned flake repo or git fails the ownership guard.
-    # This writes to /etc/gitconfig (system-wide), read by all users.
-    programs.git.enable = true;
-    programs.git.config = {
-      safe.directory = ["${config.settings.flake-path}"];
     };
   };
 }
