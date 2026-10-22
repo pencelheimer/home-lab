@@ -19,7 +19,18 @@
         enable = true;
         addToSystemPackages = true;
         environmentFiles = config.settings.hermes.env-files;
-        extraPackages = with pkgs; [playwright-mcp];
+        extraPackages = with pkgs; [playwright-mcp antigravity-cli];
+        extraPlugins = [
+          (pkgs.fetchFromGitHub {
+            owner = "neerazz";
+            repo = "hermes-antigravity-oauth";
+            # must set pname so lib.getName() produces a stable name.
+            pname = "antigravity-oauth";
+            rev = "97b4b7d4dff3d5e4797693534c356d1142833e84";
+            hash = "sha256-osM+wgzvidoS4xqhlWuG+aEULj5c2Wr4rKdHtC591/A=";
+          })
+        ];
+        settings.plugins.enabled = ["antigravity-oauth"];
 
         settings.model = {
           provider = "openrouter";
@@ -55,7 +66,18 @@
 
       systemd.services.hermes-agent.serviceConfig.ReadWritePaths = ["/srv/shared"];
       users.users.hermes.extraGroups = ["users"];
+      # Rebuild service runs as root with no $HOME; it must trust the
+      # pencelheimer-owned flake repo or git fails the ownership guard.
+      # This writes to /etc/gitconfig (system-wide), read by all users.
+      programs.git.enable = true;
+      programs.git.config = {
+        safe.directory = ["${config.settings.flake-path}"];
+      };
       environment.shellAliases.hermes-as = "sudo -u hermes -H env HERMES_HOME=/var/lib/hermes/.hermes hermes";
+      # agy CLI provides the `agy` command the antigravity-oauth plugin delegates to.
+      environment.systemPackages = with pkgs; [
+        antigravity-cli
+      ];
 
       systemd.services.hermes-agent.serviceConfig.SupplementaryGroups = ["systemd-journal"];
       systemd.services.hermes-agent.serviceConfig.NoNewPrivileges = lib.mkForce false;
@@ -111,6 +133,10 @@
         mkdir -p $out
         cp ${inputs.hermes-agent}/registration_lifecycle.py $out/
       '';
+      # antigravity-oauth plugin resolves its `agy` binary via PATH from inside
+      # the hermes venv. The gateway unit's PATH doesn't include the agy CLI, so
+      # point the plugin at the resolved binary explicitly.
+      systemd.services.hermes-agent.environment.ANTIGRAVITY_CLI_PATH = "${pkgs.antigravity-cli}/bin/agy";
     };
   };
 }
